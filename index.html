@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Briefing de Desenvolvimento de Projetos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ===================== TELA INICIAL ===================== -->
+    <section class="screen screen-intro is-active" id="intro">
+      <div class="intro-stage">
+        <div class="intro-photo" aria-hidden="true"></div>
+
+        <main class="intro-card">
+          <p class="label">Questionário</p>
+          <h1 class="intro-title">
+            Briefing de<br />Desenvolvimento<br />de Projetos
+          </h1>
+          <p class="intro-text">
+            Esse questionário vai me ajudar a entender melhor o seu projeto,
+            suas necessidades e expectativas, para que eu possa te entregar a
+            melhor solução possível.
+          </p>
+
+          <ul class="features">
+            <li>
+              <span class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="5" y="3" width="14" height="18" rx="1.5" />
+                  <path d="M8.5 8h7M8.5 12h7M8.5 16h4.5" />
+                </svg>
+              </span>
+              <span>Respostas rápidas<br />e objetivas</span>
+            </li>
+            <li>
+              <span class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+              </span>
+              <span>Leva em média 5 a 10 minutos</span>
+            </li>
+            <li>
+              <span class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="5" y="10.5" width="14" height="10" rx="2" />
+                  <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" />
+                  <path d="M12 14.5v2.5" />
+                </svg>
+              </span>
+              <span>Suas informações são<br />confidenciais</span>
+            </li>
+          </ul>
+
+          <button class="btn btn-primary btn-lg" type="button" data-go="1">
+            Começar agora <span class="arrow">→</span>
+          </button>
+
+          <p class="intro-signature">Eloá | Desenvolvimento web</p>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================== ETAPAS ===================== -->
+    <section class="screen screen-form" id="form-screen">
+      <form class="form-card" id="briefing-form" novalidate>
+        <div class="progress">
+          <div class="progress-top">
+            <span id="step-label">Etapa 1 de 8</span>
+            <span id="step-percent">13%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- ETAPA 1 -->
+        <fieldset class="step" data-step="1">
+          <h2 class="step-title">Sobre você</h2>
+          <p class="step-text">
+            Vamos começar com algumas informações básicas<br class="br-desk" />
+            para eu te conhecer melhor.
+          </p>
+
+          <div class="field">
+            <label for="nome">Qual é o seu nome?</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Seu nome completo"
+              autocomplete="name"
+              required
+            />
+            <small class="error-msg">Por favor, preencha seu nome.</small>
+          </div>
+
+          <div class="field">
+            <label for="empresa">Qual é o nome da sua empresa?</label>
+            <input
+              type="text"
+              id="empresa"
+              name="empresa"
+              placeholder="Nome da empresa"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="field">
+            <label for="telefone">Qual é o seu telefone?</label>
+            <div class="phone">
+              <span class="phone-prefix">
+                <svg class="flag" viewBox="0 0 28 20" aria-hidden="true">
+                  <rect width="28" height="20" rx="2" fill="#229E45" />
+                  <path d="M14 2.8 25 10 14 17.2 3 10z" fill="#F8E509" />
+                  <circle cx="14" cy="10" r="4.4" fill="#2B49A3" />
+                </svg>
+                +55
+              </span>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="(11) 91234-5678"
+                autocomplete="tel-national"
+                maxlength="15"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Qual é o seu e-mail?</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="seuemail@exemplo.com"
+              autocomplete="email"
+              required
+            />
+            <small class="error-msg">Informe um e-mail válido.</small>
+          </div>
+
+          <div class="actions actions-end">
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 2 -->
+        <fieldset class="step" data-step="2">
+          <h2 class="step-title">Objetivos do projeto</h2>
+          <p class="step-text">Me conta o que a empresa espera do novo site.</p>
+
+          <div class="field">
+            <label for="objetivo"
+              >Qual é o principal objetivo do novo site?</label
+            >
+            <div class="select">
+              <select id="objetivo" name="objetivo">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Apresentar institucionalmente a empresa.</option>
+                <option>Divulgar produtos ou serviços.</option>
+                <option>Fortalecer a imagem e a credibilidade da marca.</option>
+                <option>
+                  Atrair novos clientes e oportunidades comerciais.
+                </option>
+                <option>
+                  Apresentar a estrutura e os processos da empresa.
+                </option>
+                <option>
+                  Reunir informações importantes em um único lugar.
+                </option>
+                <option>Outro objetivo.</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="objetivo"
+            data-show-value="Outro objetivo."
+            hidden
+          >
+            <label for="objetivo-outro">Qual é o outro objetivo?</label>
+            <input
+              type="text"
+              id="objetivo-outro"
+              name="objetivo_outro"
+              placeholder="Descreva o objetivo do site"
+            />
+          </div>
+
+          <div class="field">
+            <label for="publico"
+              >Quem é o público que a empresa deseja alcançar com o site?</label
+            >
+            <p class="field-help">
+              Descreva, por exemplo, se o site será direcionado a clientes,
+              empresas parceiras, fornecedores, profissionais do setor ou outros
+              públicos.
+            </p>
+            <textarea id="publico" name="publico" rows="3"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="diferenciais"
+              >Quais são os principais diferenciais da empresa?</label
+            >
+            <p class="field-help">
+              Conte o que torna a empresa diferente e quais características
+              devem ser destacadas no site.
+            </p>
+            <textarea id="diferenciais" name="diferenciais" rows="3"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="mensagem-principal"
+              >Existe alguma mensagem principal que a empresa gostaria de
+              transmitir aos visitantes?
+              <span class="optional">(opcional)</span></label
+            >
+            <textarea
+              id="mensagem-principal"
+              name="mensagem_principal"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 3 -->
+        <fieldset class="step" data-step="3">
+          <h2 class="step-title">Design e direção visual</h2>
+          <p class="step-text">
+            Agora vamos falar sobre as preferências visuais do site.
+          </p>
+
+          <div class="field">
+            <label id="cores-label"
+              >Quais cores você gostaria de destacar no site?</label
+            >
+            <div class="choices" role="group" aria-labelledby="cores-label">
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="cores"
+                  value="As cores da identidade visual da empresa."
+                />
+                <span>As cores da identidade visual da empresa.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="cores"
+                  value="Tons neutros, como branco, bege, cinza e preto."
+                />
+                <span>Tons neutros, como branco, bege, cinza e preto.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="cores"
+                  value="Tons naturais, como verde, marrom e areia."
+                />
+                <span>Tons naturais, como verde, marrom e areia.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="cores"
+                  value="Cores vibrantes e contrastantes."
+                />
+                <span>Cores vibrantes e contrastantes.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="cores"
+                  value="Ainda não temos uma preferência específica."
+                />
+                <span>Ainda não temos uma preferência específica.</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="cores" value="Outras cores." />
+                <span>Outras cores.</span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="cores"
+            data-show-value="Outras cores."
+            hidden
+          >
+            <label for="cores-outras">Quais outras cores?</label>
+            <input
+              type="text"
+              id="cores-outras"
+              name="cores_outras"
+              placeholder="Descreva as cores"
+            />
+          </div>
+
+          <div class="field">
+            <label for="estilo-visual"
+              >Qual estilo visual combina mais com a empresa?</label
+            >
+            <div class="select">
+              <select id="estilo-visual" name="estilo_visual">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Minimalista e elegante.</option>
+                <option>Moderno e tecnológico.</option>
+                <option>Corporativo e profissional.</option>
+                <option>Industrial e robusto.</option>
+                <option>Natural e sustentável.</option>
+                <option>Criativo e descontraído.</option>
+                <option>Sofisticado e premium.</option>
+                <option>Outro estilo.</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="estilo_visual"
+            data-show-value="Outro estilo."
+            hidden
+          >
+            <label for="estilo-outro">Qual outro estilo?</label>
+            <input
+              type="text"
+              id="estilo-outro"
+              name="estilo_outro"
+              placeholder="Descreva o estilo"
+            />
+          </div>
+
+          <div class="field">
+            <label for="referencias"
+              >Existe algum site que você gostaria de utilizar como
+              referência?</label
+            >
+            <p class="field-help">
+              Compartilhe o endereço de um site de que você gosta e explique, se
+              desejar, o que mais chama sua atenção nele.
+            </p>
+            <input type="text" id="referencias" name="referencias" />
+          </div>
+
+          <div class="field">
+            <label for="preferencias-visuais"
+              >Existe alguma preferência visual específica que devemos
+              considerar? <span class="optional">(opcional)</span></label
+            >
+            <p class="field-help">
+              Você pode mencionar preferências de organização, imagens,
+              animações, estilo dos botões ou outros detalhes visuais.
+            </p>
+            <textarea
+              id="preferencias-visuais"
+              name="preferencias_visuais"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 4 -->
+        <fieldset class="step" data-step="4">
+          <h2 class="step-title">Conteúdo e textos</h2>
+          <p class="step-text">
+            Quais informações vão aparecer no site e como os textos serão
+            fornecidos.
+          </p>
+
+          <div class="field">
+            <label for="textos-prontos"
+              >A empresa já possui textos institucionais preparados para o
+              site?</label
+            >
+            <div class="select">
+              <select id="textos-prontos" name="textos_prontos">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, temos os textos prontos.</option>
+                <option>
+                  Temos alguns textos, mas precisamos complementá-los.
+                </option>
+                <option>Temos apenas informações básicas.</option>
+                <option>Ainda não temos os textos preparados.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="textos-fornecimento"
+              >Como os textos e as informações do site serão fornecidos?</label
+            >
+            <div class="select">
+              <select id="textos-fornecimento" name="textos_fornecimento">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>A empresa fornecerá os textos prontos.</option>
+                <option>
+                  A empresa fornecerá as informações para organização do
+                  conteúdo.
+                </option>
+                <option>
+                  Outra pessoa ou profissional ficará responsável pelos textos.
+                </option>
+                <option>Ainda precisamos definir essa responsabilidade.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label id="paginas-label"
+              >Quais páginas ou seções a empresa deseja incluir no site?</label
+            >
+            <div class="choices" role="group" aria-labelledby="paginas-label">
+              <label class="choice">
+                <input type="checkbox" name="paginas" value="Página inicial." />
+                <span>Página inicial.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Sobre a empresa."
+                />
+                <span>Sobre a empresa.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="História da empresa."
+                />
+                <span>História da empresa.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Produtos ou serviços."
+                />
+                <span>Produtos ou serviços.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Diferenciais da empresa."
+                />
+                <span>Diferenciais da empresa.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Estrutura e instalações."
+                />
+                <span>Estrutura e instalações.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Processo de produção."
+                />
+                <span>Processo de produção.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Sustentabilidade."
+                />
+                <span>Sustentabilidade.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Qualidade e certificações."
+                />
+                <span>Qualidade e certificações.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Trabalhe conosco."
+                />
+                <span>Trabalhe conosco.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Clientes e parceiros."
+                />
+                <span>Clientes e parceiros.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="paginas"
+                  value="Perguntas frequentes."
+                />
+                <span>Perguntas frequentes.</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="paginas" value="Contato." />
+                <span>Contato.</span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="paginas" value="Outra seção." />
+                <span>Outra seção.</span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="paginas"
+            data-show-value="Outra seção."
+            hidden
+          >
+            <label for="paginas-outra">Qual outra seção?</label>
+            <input
+              type="text"
+              id="paginas-outra"
+              name="paginas_outra"
+              placeholder="Descreva a seção"
+            />
+          </div>
+
+          <div class="field">
+            <label id="informacoes-institucionais-label"
+              >Quais informações devem aparecer na apresentação institucional da
+              empresa?</label
+            >
+            <div
+              class="choices"
+              role="group"
+              aria-labelledby="informacoes-institucionais-label"
+            >
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="História e trajetória."
+                />
+                <span>História e trajetória.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Ano de fundação."
+                />
+                <span>Ano de fundação.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Localização."
+                />
+                <span>Localização.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Área de atuação."
+                />
+                <span>Área de atuação.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Produtos ou serviços oferecidos."
+                />
+                <span>Produtos ou serviços oferecidos.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Estrutura e capacidade de produção."
+                />
+                <span>Estrutura e capacidade de produção.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Missão, visão e valores."
+                />
+                <span>Missão, visão e valores.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Diferenciais competitivos."
+                />
+                <span>Diferenciais competitivos.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Experiência no mercado."
+                />
+                <span>Experiência no mercado.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="informacoes_institucionais"
+                  value="Outras informações."
+                />
+                <span>Outras informações.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tom-apresentacao"
+              >Como a empresa gostaria de ser apresentada no site?</label
+            >
+            <div class="select">
+              <select id="tom-apresentacao" name="tom_apresentacao">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>De forma institucional e objetiva.</option>
+                <option>De forma próxima e humanizada.</option>
+                <option>Com foco na tradição e na experiência.</option>
+                <option>Com foco na inovação e na tecnologia.</option>
+                <option>Com foco na qualidade e nos diferenciais.</option>
+                <option>Ainda não definimos.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="informacoes-obrigatorias"
+              >Existe alguma informação que obrigatoriamente precisa aparecer no
+              site? <span class="optional">(opcional)</span></label
+            >
+            <p class="field-help">
+              Informe mensagens, dados, informações institucionais ou outros
+              conteúdos indispensáveis.
+            </p>
+            <textarea
+              id="informacoes-obrigatorias"
+              name="informacoes_obrigatorias"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="informacoes-restritas"
+              >Existe alguma informação que não deve ser publicada no site?
+              <span class="optional">(opcional)</span></label
+            >
+            <p class="field-help">
+              Informe eventuais restrições de divulgação ou informações que
+              devam permanecer confidenciais.
+            </p>
+            <textarea
+              id="informacoes-restritas"
+              name="informacoes_restritas"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 5 -->
+        <fieldset class="step" data-step="5">
+          <h2 class="step-title">Imagens e vídeos</h2>
+          <p class="step-text">
+            Quais fotos e vídeos a empresa possui ou pretende utilizar.
+          </p>
+
+          <div class="field">
+            <label for="fotografias"
+              >A empresa já possui fotografias próprias para utilizar no
+              site?</label
+            >
+            <div class="select">
+              <select id="fotografias" name="fotografias">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, temos fotografias profissionais.</option>
+                <option>
+                  Temos algumas fotografias, mas precisaremos complementar.
+                </option>
+                <option>Temos apenas fotografias feitas com celular.</option>
+                <option>Ainda precisamos produzir as fotografias.</option>
+                <option>Precisamos avaliar essa questão.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label id="tipos-imagens-label"
+              >Quais tipos de imagens a empresa gostaria de utilizar?</label
+            >
+            <div
+              class="choices"
+              role="group"
+              aria-labelledby="tipos-imagens-label"
+            >
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Fotografias da empresa e de suas instalações."
+                />
+                <span>Fotografias da empresa e de suas instalações.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Fotografias dos produtos."
+                />
+                <span>Fotografias dos produtos.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Fotografias da equipe."
+                />
+                <span>Fotografias da equipe.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Fotografias dos processos de produção."
+                />
+                <span>Fotografias dos processos de produção.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Fotografias de clientes ou parceiros, quando autorizadas."
+                />
+                <span
+                  >Fotografias de clientes ou parceiros, quando
+                  autorizadas.</span
+                >
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Imagens ilustrativas."
+                />
+                <span>Imagens ilustrativas.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="tipos_imagens"
+                  value="Ainda não sabemos."
+                />
+                <span>Ainda não sabemos.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="quantidade-fotos"
+              >Aproximadamente quantas fotografias você imagina utilizar no
+              site?</label
+            >
+            <div class="select">
+              <select id="quantidade-fotos" name="quantidade_fotos">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>De 1 a 5 fotografias.</option>
+                <option>De 6 a 10 fotografias.</option>
+                <option>De 11 a 20 fotografias.</option>
+                <option>Mais de 20 fotografias.</option>
+                <option>Ainda não sabemos.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="videos">O site terá vídeos?</label>
+            <div class="select">
+              <select id="videos" name="videos">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, vídeos institucionais da empresa.</option>
+                <option>Sim, vídeos dos produtos ou processos.</option>
+                <option>Sim, vídeos de apresentação ou depoimentos.</option>
+                <option>Não pretendemos utilizar vídeos.</option>
+                <option>Ainda não decidimos.</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="videos"
+            data-show-value="Sim, vídeos institucionais da empresa.|Sim, vídeos dos produtos ou processos.|Sim, vídeos de apresentação ou depoimentos."
+            hidden
+          >
+            <label for="videos-disponiveis"
+              >Os vídeos já estão disponíveis?</label
+            >
+            <div class="select">
+              <select id="videos-disponiveis" name="videos_disponiveis">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, os vídeos estão prontos.</option>
+                <option>Temos vídeos, mas precisamos organizá-los.</option>
+                <option>Ainda precisamos produzir os vídeos.</option>
+                <option>Não se aplica.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="autorizacao-imagens"
+              >A empresa possui autorização para utilizar as imagens e os vídeos
+              fornecidos?</label
+            >
+            <div class="select">
+              <select id="autorizacao-imagens" name="autorizacao_imagens">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, os materiais estão autorizados para uso.</option>
+                <option>Precisamos confirmar as autorizações.</option>
+                <option>Ainda não temos os materiais.</option>
+                <option>Não se aplica.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 6 -->
+        <fieldset class="step" data-step="6">
+          <h2 class="step-title">
+            Sustentabilidade, qualidade e responsabilidade social
+          </h2>
+          <p class="step-text">
+            Quais iniciativas e diferenciais a empresa deseja apresentar
+            publicamente.
+          </p>
+
+          <div class="field">
+            <label for="sustentabilidade"
+              >A empresa desenvolve iniciativas de sustentabilidade ou
+              responsabilidade social?</label
+            >
+            <div class="select">
+              <select id="sustentabilidade" name="sustentabilidade">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, temos iniciativas estruturadas.</option>
+                <option>Sim, realizamos algumas ações.</option>
+                <option>Estamos desenvolvendo iniciativas nessa área.</option>
+                <option>
+                  Não temos iniciativas específicas para divulgar.
+                </option>
+                <option>
+                  Precisamos confirmar quais informações podem ser divulgadas.
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label id="iniciativas-label"
+              >Quais iniciativas a empresa gostaria de apresentar no
+              site?</label
+            >
+            <div
+              class="choices"
+              role="group"
+              aria-labelledby="iniciativas-label"
+            >
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Redução do consumo de água."
+                />
+                <span>Redução do consumo de água.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Redução do consumo de energia."
+                />
+                <span>Redução do consumo de energia.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Gestão e redução de resíduos."
+                />
+                <span>Gestão e redução de resíduos.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Reciclagem e reaproveitamento de materiais."
+                />
+                <span>Reciclagem e reaproveitamento de materiais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Uso responsável de matérias-primas."
+                />
+                <span>Uso responsável de matérias-primas.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Redução de impactos ambientais na produção."
+                />
+                <span>Redução de impactos ambientais na produção.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Projetos sociais."
+                />
+                <span>Projetos sociais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Valorização dos colaboradores e condições de trabalho."
+                />
+                <span
+                  >Valorização dos colaboradores e condições de trabalho.</span
+                >
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Certificações ambientais ou sociais."
+                />
+                <span>Certificações ambientais ou sociais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Outras iniciativas."
+                />
+                <span>Outras iniciativas.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="iniciativas"
+                  value="Nenhuma iniciativa específica neste momento."
+                />
+                <span>Nenhuma iniciativa específica neste momento.</span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="iniciativas"
+            data-show-value="Outras iniciativas."
+            hidden
+          >
+            <label for="iniciativas-outras">Quais outras iniciativas?</label>
+            <input
+              type="text"
+              id="iniciativas-outras"
+              name="iniciativas_outras"
+              placeholder="Descreva as iniciativas"
+            />
+          </div>
+
+          <div class="field">
+            <label for="documentos-iniciativas"
+              >A empresa possui certificações ou documentos relacionados às
+              iniciativas que deseja divulgar?</label
+            >
+            <div class="select">
+              <select id="documentos-iniciativas" name="documentos_iniciativas">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>
+                  Sim, temos documentos que poderão ser apresentados.
+                </option>
+                <option>
+                  Temos documentos, mas precisamos verificar o que pode ser
+                  divulgado.
+                </option>
+                <option>Não temos documentos desse tipo.</option>
+                <option>Não se aplica.</option>
+                <option>Precisamos confirmar essa informação.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="apresentacao-iniciativas"
+              >Como a empresa gostaria de apresentar suas iniciativas de
+              sustentabilidade ou responsabilidade social?</label
+            >
+            <div class="select">
+              <select
+                id="apresentacao-iniciativas"
+                name="apresentacao_iniciativas"
+              >
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Em uma seção específica.</option>
+                <option>Ao longo das páginas institucionais.</option>
+                <option>Por meio de indicadores, números e resultados.</option>
+                <option>
+                  Por meio de fotografias e descrições dos projetos.
+                </option>
+                <option>Ainda não sabemos.</option>
+                <option>Não se aplica.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="destaque-iniciativas"
+              >Existe alguma iniciativa, informação ou resultado específico que
+              a empresa gostaria de destacar?
+              <span class="optional">(opcional)</span></label
+            >
+            <p class="field-help">
+              Descreva as iniciativas e os resultados que poderão ser
+              divulgados, caso existam.
+            </p>
+            <textarea
+              id="destaque-iniciativas"
+              name="destaque_iniciativas"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 7 -->
+        <fieldset class="step" data-step="7">
+          <h2 class="step-title">Materiais disponíveis</h2>
+          <p class="step-text">
+            Quais materiais a empresa poderá fornecer para o desenvolvimento do
+            site.
+          </p>
+
+          <div class="field">
+            <label id="materiais-label"
+              >Quais materiais a empresa já possui?</label
+            >
+            <div class="choices" role="group" aria-labelledby="materiais-label">
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Logotipo em boa qualidade."
+                />
+                <span>Logotipo em boa qualidade.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Manual da marca."
+                />
+                <span>Manual da marca.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Textos institucionais."
+                />
+                <span>Textos institucionais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Catálogo de produtos."
+                />
+                <span>Catálogo de produtos.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Fotografias profissionais."
+                />
+                <span>Fotografias profissionais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Vídeos institucionais."
+                />
+                <span>Vídeos institucionais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Apresentação comercial."
+                />
+                <span>Apresentação comercial.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Certificações e documentos autorizados para divulgação."
+                />
+                <span
+                  >Certificações e documentos autorizados para divulgação.</span
+                >
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Informações de contato atualizadas."
+                />
+                <span>Informações de contato atualizadas.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Outros materiais."
+                />
+                <span>Outros materiais.</span>
+              </label>
+              <label class="choice">
+                <input
+                  type="checkbox"
+                  name="materiais"
+                  value="Ainda precisamos organizar os materiais."
+                />
+                <span>Ainda precisamos organizar os materiais.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="local-materiais"
+              >Onde os materiais estão disponíveis?</label
+            >
+            <div class="select">
+              <select id="local-materiais" name="local_materiais">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Em uma pasta organizada no computador.</option>
+                <option>Em um serviço de armazenamento na nuvem.</option>
+                <option>No site atual.</option>
+                <option>Com a equipe de marketing ou comunicação.</option>
+                <option>Com o departamento de TI.</option>
+                <option>Ainda precisamos organizar os materiais.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="responsavel-materiais"
+              >Quem será responsável por fornecer os materiais?</label
+            >
+            <p class="field-help">
+              Informe o nome ou o setor responsável por reunir e encaminhar os
+              materiais necessários para o projeto.
+            </p>
+            <input
+              type="text"
+              id="responsavel-materiais"
+              name="responsavel_materiais"
+            />
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="button" data-next>
+              Próxima etapa <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- ETAPA 8 -->
+        <fieldset class="step" data-step="8">
+          <h2 class="step-title">Domínio e hospedagem</h2>
+          <p class="step-text">
+            Por último, algumas perguntas sobre o endereço e a hospedagem do
+            site.<br class="br-desk" />
+            Se não souber alguma resposta, sem problema.
+          </p>
+
+          <div class="field">
+            <label for="dominio">A empresa possui um domínio registrado?</label>
+            <p class="field-help">
+              O domínio é o endereço utilizado para acessar o site, como
+              www.suaempresa.com.br.
+            </p>
+            <div class="select">
+              <select id="dominio" name="dominio">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, já temos um domínio registrado.</option>
+                <option>Não temos um domínio registrado.</option>
+                <option>Não sabemos informar.</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="dominio"
+            data-show-value="Sim, já temos um domínio registrado."
+            hidden
+          >
+            <label for="dominio-endereco"
+              >Qual é o endereço do domínio atual?</label
+            >
+            <p class="field-help">
+              Se a empresa já possui um domínio, informe o endereço para que
+              possamos verificar a possibilidade de aproveitá-lo no novo site.
+            </p>
+            <input
+              type="text"
+              id="dominio-endereco"
+              name="dominio_endereco"
+              placeholder="www.suaempresa.com.br"
+            />
+          </div>
+
+          <div class="field">
+            <label for="hospedagem"
+              >A empresa possui um serviço de hospedagem contratado?</label
+            >
+            <p class="field-help">
+              A hospedagem é o serviço utilizado para armazenar os arquivos do
+              site e disponibilizá-lo na internet.
+            </p>
+            <div class="select">
+              <select id="hospedagem" name="hospedagem">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, já temos uma hospedagem contratada.</option>
+                <option>Não temos uma hospedagem contratada.</option>
+                <option>Não sabemos informar.</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="field"
+            data-show-if="hospedagem"
+            data-show-value="Sim, já temos uma hospedagem contratada."
+            hidden
+          >
+            <label for="hospedagem-empresa"
+              >Qual empresa fornece a hospedagem atual?</label
+            >
+            <p class="field-help">
+              Se souber, informe o nome da empresa responsável pela hospedagem
+              do site atual.
+            </p>
+            <input
+              type="text"
+              id="hospedagem-empresa"
+              name="hospedagem_empresa"
+              placeholder="Hostinger, GoDaddy ou outra empresa."
+            />
+          </div>
+
+          <div class="field">
+            <label for="acessos"
+              >A empresa possui acesso ao domínio e à hospedagem atuais?</label
+            >
+            <p class="field-help">
+              Precisaremos verificar os acessos disponíveis para avaliar se os
+              recursos existentes poderão ser aproveitados.
+            </p>
+            <div class="select">
+              <select id="acessos" name="acessos">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option>Sim, temos acesso aos dois.</option>
+                <option>Temos acesso somente ao domínio.</option>
+                <option>Temos acesso somente à hospedagem.</option>
+                <option>Não temos acesso a nenhum dos dois.</option>
+                <option>Precisamos confirmar com o responsável pelo TI.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-outline" type="button" data-prev>
+              <span class="arrow">←</span> Etapa anterior
+            </button>
+            <button class="btn btn-primary" type="submit">
+              Enviar respostas <span class="arrow">→</span>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- ===================== OBRIGADA ===================== -->
+    <section class="screen screen-thanks" id="thanks">
+      <div class="thanks-stage">
+        <div class="thanks-content">
+          <div class="thanks-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            >
+              <path d="M21 3 3 10.5l7 2.5 2.5 7z" />
+              <path d="M21 3 10 13" />
+            </svg>
+          </div>
+
+          <h2 class="thanks-title">Obrigada!</h2>
+          <p class="thanks-lead">Suas respostas foram enviadas com sucesso.</p>
+
+          <hr class="thanks-divider" />
+
+          <p class="thanks-text">
+            Muito obrigada por dedicar seu tempo para responder a este
+            questionário. Em breve entrarei em contato para conversarmos sobre o
+            seu projeto.
+          </p>
+
+          <div class="thanks-actions">
+            <button class="btn btn-primary" type="button" data-home>
+              Voltar ao início
+            </button>
+            <button class="thanks-link" type="button" data-restart>
+              Preencher novamente
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confirmação de novo preenchimento -->
+    <dialog
+      class="confirm"
+      id="confirm-restart"
+      aria-labelledby="confirm-title"
+      aria-describedby="confirm-text"
+    >
+      <h2 class="confirm-title" id="confirm-title">
+        Deseja preencher o formulário novamente?
+      </h2>
+      <p class="confirm-text" id="confirm-text">
+        Você iniciará um novo preenchimento e suas respostas anteriores serão
+        excluídas. Elas não serão enviadas novamente.
+      </p>
+      <div class="confirm-actions">
+        <button class="btn btn-outline" type="button" data-cancel>
+          Cancelar
+        </button>
+        <button class="btn btn-primary" type="button" data-confirm>
+          Sim, preencher novamente
+        </button>
+      </div>
+    </dialog>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

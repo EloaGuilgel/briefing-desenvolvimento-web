@@ -1,0 +1,926 @@
+/* =========================================================
+   BRIEFING DE DESENVOLVIMENTO DE PROJETOS
+   ---------------------------------------------------------
+   --u é a "unidade" do layout: vale 1px em telas altas e
+   diminui sozinha em telas baixas, para tudo caber sem rolagem.
+   ========================================================= */
+
+:root {
+  /* Cores */
+  --page: #f2ede7;
+  --card: #fbf9f6;
+  --title: #2a211c;
+  --body: #4a3f38;
+  --muted: #8a7d74;
+  --muted-2: #6e6159;
+  --label: #8a766a;
+  --line: #e4dcd3;
+  --track: #e8e1d9;
+  --input-bg: #fdfcfa;
+  --placeholder: #a99d94;
+  --icon-bg: #ede4da;
+  --icon: #6b4f42;
+  --btn: #5e4235;
+  --btn-hover: #4e3529;
+  --error: #b4533f;
+
+  /* Fontes */
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Unidade que encolhe em telas baixas */
+  --u: min(1px, calc(100vh / 860));
+}
+@supports (height: 100dvh) {
+  :root {
+    --u: min(1px, calc(100dvh / 860));
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--body);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- Telas ---------- */
+.screen {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.screen.is-active {
+  display: flex;
+  animation: fadeIn 0.45s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 * var(--u));
+  height: calc(46 * var(--u));
+  padding: 0 calc(22 * var(--u));
+  border-radius: 6px;
+  font-size: calc(15 * var(--u));
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  white-space: nowrap;
+}
+.btn .arrow {
+  transition: transform 0.2s;
+}
+
+.btn-primary {
+  background: var(--btn);
+  color: #fff;
+  border: 0;
+}
+.btn-primary:hover {
+  background: var(--btn-hover);
+}
+.btn-primary:hover .arrow {
+  transform: translateX(3px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--title);
+  border: 1px solid #d8cfc5;
+}
+.btn-outline:hover {
+  border-color: #bfb3a7;
+  background: #f6f1ec;
+}
+.btn-outline:hover .arrow {
+  transform: translateX(-3px);
+}
+
+.btn-lg {
+  width: 100%;
+  height: calc(56 * var(--u));
+  border-radius: 10px;
+  font-size: calc(17 * var(--u));
+}
+
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--btn);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   TELA INICIAL
+   ---------------------------------------------------------
+   Réplica da referência (454 x 476). A tela é um "quadro"
+   com essa proporção, e todas as medidas usam cqh:
+   1 px da referência = 100/476 cqh ≈ 0,21cqh.
+   ========================================================= */
+.screen-intro {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #eee8e1;
+}
+
+.intro-stage {
+  position: relative;
+  height: min(calc(100vh - 40px), calc((100vw - 40px) * 476 / 454));
+  aspect-ratio: 454 / 476;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(60, 40, 30, 0.1);
+  /* tons da parede/mesa da foto, para a borda direita da foto sumir */
+  background: linear-gradient(180deg, #ebdfd2 0%, #e2d3c3 55%, #b9a491 100%);
+  container-type: size;
+}
+@supports (height: 100dvh) {
+  .intro-stage {
+    height: min(calc(100dvh - 40px), calc((100vw - 40px) * 476 / 454));
+  }
+}
+
+/* Foto: encostada à esquerda, clareada como na referência */
+.intro-photo {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 251, 246, 0.3), rgba(255, 251, 246, 0.3)),
+    url("../img/fundo-briefing.jpg") 0% 62% / auto 105% no-repeat;
+  filter: saturate(0.82) brightness(1.03);
+  -webkit-mask-image: linear-gradient(to right, #000 62%, transparent 73.4%);
+  mask-image: linear-gradient(to right, #000 62%, transparent 73.4%);
+}
+
+.intro-card {
+  position: absolute;
+  top: 2.52cqh; /* 12px  */
+  bottom: 2.94cqh; /* 14px  */
+  right: 2.94cqh; /* 14px  */
+  width: 62.4cqh; /* 297px */
+  display: flex;
+  flex-direction: column;
+  background: #f7f3ee;
+  border-radius: 1.7cqh; /* 8px   */
+  padding: 6.7cqh 6.3cqh 5.9cqh; /* 32 / 30 / 28px */
+  box-shadow: 0 1cqh 3cqh rgba(60, 40, 30, 0.08);
+}
+
+.label {
+  font-size: 1.8cqh; /* 8.5px */
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.intro-title {
+  margin-top: 2.5cqh; /* 12px  */
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 5.46cqh; /* 26px  */
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--title);
+}
+
+.intro-text {
+  margin-top: 3.4cqh; /* 16px  */
+  font-size: 2.35cqh; /* 11.2px */
+  line-height: 1.58;
+  color: var(--body);
+}
+
+.features {
+  list-style: none;
+  margin-top: 4.8cqh; /* 23px  */
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqh; /* 11.5px */
+}
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 2.9cqh; /* 14px  */
+  font-size: 2cqh; /* 9.5px */
+  line-height: 1.4;
+  color: var(--muted-2);
+}
+.feature-icon {
+  flex: 0 0 6.3cqh; /* 30px  */
+  height: 6.3cqh;
+  border-radius: 50%;
+  background: var(--icon-bg);
+  color: var(--icon);
+  display: grid;
+  place-items: center;
+}
+.feature-icon svg {
+  width: 3.8cqh;
+  height: 3.8cqh;
+}
+.intro-card .feature-icon {
+  background: #f0e8e0;
+  color: #5a3f33;
+}
+
+.intro-card .btn-lg {
+  margin-top: auto; /* empurra o botão para o rodapé do card */
+  height: 8cqh; /* 38px  */
+  border-radius: 1.5cqh; /* 7px   */
+  font-size: 2.6cqh; /* 12.3px */
+  font-weight: 400;
+  gap: 1.6cqh;
+}
+
+/* Fica no espaço do padding inferior, sem empurrar o botão */
+.intro-signature {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2cqh;
+  text-align: center;
+  font-size: 1.7cqh; /* 8px */
+  letter-spacing: 0.12em;
+  color: var(--label);
+  opacity: 0.85;
+}
+
+/* =========================================================
+   ETAPAS
+   ========================================================= */
+.screen-form {
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 * var(--u));
+}
+
+.form-card {
+  width: 100%;
+  max-width: calc(620 * var(--u));
+  background: var(--card);
+  border: 1px solid #ece5dd;
+  border-radius: 14px;
+  padding: calc(40 * var(--u)) calc(52 * var(--u));
+  box-shadow: 0 16px 40px rgba(60, 40, 30, 0.06);
+}
+
+/* Progresso */
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: calc(12 * var(--u));
+}
+#step-percent {
+  font-size: calc(11.5 * var(--u));
+  color: var(--muted-2);
+}
+
+.progress-track {
+  margin-top: calc(10 * var(--u));
+  height: 4px;
+  background: var(--track);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--btn);
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+/* Etapa */
+.step {
+  display: none;
+  border: 0;
+  min-width: 0;
+}
+.step.is-active {
+  display: block;
+  animation: fadeIn 0.4s ease both;
+}
+
+.step-title {
+  margin-top: calc(32 * var(--u));
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: calc(34 * var(--u));
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--title);
+}
+.step-text {
+  margin-top: calc(6 * var(--u));
+  font-size: calc(15 * var(--u));
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Campos */
+.field {
+  margin-top: calc(22 * var(--u));
+}
+
+.field label {
+  display: block;
+  margin-bottom: calc(9 * var(--u));
+  font-size: calc(14.5 * var(--u));
+  font-weight: 500;
+  color: var(--title);
+}
+.optional {
+  font-weight: 400;
+}
+/* Múltipla escolha */
+.choices {
+  display: grid;
+  gap: calc(9 * var(--u));
+}
+.field .choice {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(10 * var(--u));
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--body);
+  cursor: pointer;
+}
+.choice input {
+  flex: none;
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  margin-top: calc(2 * var(--u));
+  accent-color: var(--btn);
+  cursor: pointer;
+}
+.choice input:focus {
+  box-shadow: none;
+}
+.field-help {
+  margin-top: calc(-4 * var(--u));
+  margin-bottom: calc(10 * var(--u));
+  font-size: calc(14.5 * var(--u));
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  height: calc(46 * var(--u));
+  padding: 0 calc(14 * var(--u));
+  background: var(--input-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: max(calc(14.5 * var(--u)), 13px);
+  color: var(--title);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+textarea {
+  height: calc(74 * var(--u));
+  padding: calc(11 * var(--u)) calc(14 * var(--u));
+  line-height: 1.5;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--placeholder);
+  opacity: 1;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #bba899;
+  box-shadow: 0 0 0 3px rgba(94, 66, 53, 0.08);
+}
+
+/* Erro */
+.error-msg {
+  display: none;
+  margin-top: 6px;
+  font-size: calc(12.5 * var(--u));
+  color: var(--error);
+}
+.field.has-error input {
+  border-color: var(--error);
+}
+.field.has-error .error-msg {
+  display: block;
+}
+
+/* Select */
+.select {
+  position: relative;
+}
+.select select {
+  padding-right: 40px;
+  cursor: pointer;
+}
+.select select.is-empty {
+  color: var(--placeholder);
+}
+.select select option {
+  color: var(--title);
+}
+.select::after {
+  content: "";
+  position: absolute;
+  right: 17px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.6px solid var(--title);
+  border-bottom: 1.6px solid var(--title);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* Telefone */
+.phone {
+  display: flex;
+  height: calc(46 * var(--u));
+  background: var(--input-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.phone:focus-within {
+  border-color: #bba899;
+  box-shadow: 0 0 0 3px rgba(94, 66, 53, 0.08);
+}
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 calc(14 * var(--u));
+  border-right: 1px solid var(--line);
+  font-size: max(calc(14.5 * var(--u)), 13px);
+  color: var(--title);
+}
+.flag {
+  width: 20px;
+  height: 14px;
+}
+.phone input {
+  border: 0;
+  height: 100%;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+/* Data */
+.date {
+  position: relative;
+}
+.date input[type="text"] {
+  padding-right: 46px;
+}
+.date-native {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.date-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+.date-btn:hover {
+  background: #f1ebe4;
+}
+.date-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ações */
+.actions {
+  margin-top: calc(28 * var(--u));
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.actions-end {
+  justify-content: flex-end;
+}
+
+/* =========================================================
+   OBRIGADA
+   A foto aparece inteira (proporção 3:2) e o texto é
+   dimensionado pela altura dela (unidade cqh).
+   ========================================================= */
+.screen-thanks {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #eee8e1;
+}
+
+.thanks-stage {
+  position: relative;
+  width: min(calc(100vw - 48px), calc((100vh - 48px) * 1.5));
+  aspect-ratio: 3 / 2;
+  background: #f6f2ec url("../img/fundo-obrigada.jpg") center / cover no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(60, 40, 30, 0.1);
+  container-type: size;
+}
+@supports (height: 100dvh) {
+  .thanks-stage {
+    width: min(calc(100vw - 48px), calc((100dvh - 48px) * 1.5));
+  }
+}
+
+.thanks-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 17%; /* começa depois da faixa da folha */
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 6cqw;
+}
+
+.thanks-icon {
+  width: 15cqh;
+  height: 15cqh;
+  border-radius: 50%;
+  background: #ebddd3;
+  color: var(--icon);
+  display: grid;
+  place-items: center;
+}
+.thanks-icon svg {
+  width: 46%;
+  height: 46%;
+  transform: translate(-4%, 3%);
+}
+
+.thanks-title {
+  margin-top: 4.5cqh;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 8.5cqh;
+  line-height: 1.1;
+  color: var(--title);
+}
+.thanks-lead {
+  margin-top: 1.6cqh;
+  font-size: 3cqh;
+  color: var(--title);
+}
+.thanks-divider {
+  width: 6cqh;
+  margin: 4.5cqh auto;
+  border: 0;
+  border-top: 1px solid #d6cbc0;
+}
+.thanks-text {
+  max-width: 70cqh;
+  font-size: 2.7cqh;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Botões da tela final */
+.thanks-actions {
+  margin-top: 5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6cqh;
+}
+.thanks-actions .btn {
+  height: 8.5cqh;
+  padding: 0 5cqh;
+  font-size: 2.7cqh;
+}
+.thanks-link {
+  background: none;
+  border: 0;
+  padding: 0.6cqh 1cqh;
+  font-size: 2.4cqh;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.thanks-link:hover {
+  color: var(--title);
+}
+.thanks-link:focus-visible {
+  outline: 2px solid var(--btn);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Caixa de confirmação */
+.confirm {
+  margin: auto;
+  width: min(440px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border: 0;
+  border-radius: 14px;
+  padding: 28px;
+  background: var(--card);
+  color: var(--body);
+  box-shadow: 0 20px 50px rgba(60, 40, 30, 0.18);
+}
+.confirm::backdrop {
+  background: rgba(42, 33, 28, 0.35);
+}
+.confirm-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--title);
+}
+.confirm-text {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+.confirm-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.confirm-actions .btn {
+  height: 44px;
+  font-size: 15px;
+}
+
+/* =========================================================
+   CELULAR / TELAS ESTREITAS
+   ========================================================= */
+@media (max-width: 720px) {
+  :root {
+    --u: min(1px, calc(100vh / 900), calc(100vw / 390));
+  }
+  @supports (height: 100dvh) {
+    :root {
+      --u: min(1px, calc(100dvh / 900), calc(100vw / 390));
+    }
+  }
+  .br-desk {
+    display: none;
+  }
+
+  /* Inicial no celular: mesma composição da referência —
+     foto clara à esquerda, card centralizado por cima à direita.
+     Medidas em vw para manter a proporção em qualquer celular. */
+  .screen-intro {
+    padding: 0;
+  }
+  .intro-stage {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+    container-type: normal;
+  }
+  .intro-photo {
+    background-position: 0% 62%;
+    background-size: auto 105%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .intro-card {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%); /* card do tamanho do conteúdo, centralizado */
+    right: 12px;
+    left: 31%;
+    width: auto;
+    border-radius: 10px;
+    padding: 8vw 5.4vw 7vw;
+    box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
+  }
+  .label {
+    font-size: 2.6vw;
+  }
+  .intro-title {
+    margin-top: min(2.4vh, 3.6vw);
+    font-size: min(6.7vw, 3.4vh);
+  }
+  .intro-text {
+    margin-top: min(2.6vh, 4.4vw);
+    font-size: min(3.35vw, 1.75vh);
+    line-height: 1.6;
+  }
+  .features {
+    margin-top: min(4.6vh, 8vw);
+    gap: min(2vh, 3.6vw);
+  }
+  .features li {
+    font-size: min(3.15vw, 1.65vh);
+    gap: 3.2vw;
+  }
+  .feature-icon {
+    flex-basis: min(8.8vw, 4.4vh);
+    height: min(8.8vw, 4.4vh);
+  }
+  .feature-icon svg {
+    width: 48%;
+    height: 48%;
+  }
+  .intro-card .btn-lg {
+    margin-top: min(5.5vh, 10vw);
+    height: min(12.3vw, 6vh);
+    font-size: min(3.7vw, 1.9vh);
+    border-radius: 8px;
+    gap: 8px;
+  }
+  .intro-signature {
+    position: static;
+    margin-top: min(2.4vh, 4vw);
+    font-size: min(2.5vw, 1.3vh);
+  }
+
+  /* Etapas */
+  .screen-form {
+    padding: 12px;
+  }
+  .form-card {
+    max-width: none;
+    padding: calc(26 * var(--u)) calc(20 * var(--u));
+  }
+  .step-title {
+    margin-top: calc(24 * var(--u));
+    font-size: calc(28 * var(--u));
+  }
+  .step-text {
+    font-size: calc(14 * var(--u));
+  }
+  .field {
+    margin-top: calc(18 * var(--u));
+  }
+  .field label,
+  .field-help {
+    font-size: calc(14 * var(--u));
+  }
+  textarea {
+    height: calc(66 * var(--u));
+  }
+  .actions {
+    gap: 10px;
+  }
+  .actions .btn {
+    flex: 1;
+    padding: 0 10px;
+    gap: 6px;
+    font-size: calc(14.5 * var(--u));
+  }
+  .actions-end .btn {
+    flex: 0 1 auto;
+    padding: 0 22px;
+  }
+
+  /* Obrigada: versão vertical da arte */
+  .screen-thanks {
+    padding: 0;
+  }
+  .thanks-stage {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+    background-image: url("../img/fundo-obrigada-mobile.jpg");
+  }
+  .thanks-content {
+    left: 0;
+    right: 0;
+    padding: 0 30px;
+  }
+  .thanks-icon {
+    width: 84px;
+    height: 84px;
+  }
+  .thanks-title {
+    margin-top: 26px;
+    font-size: 42px;
+  }
+  .thanks-lead {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  .thanks-divider {
+    width: 40px;
+    margin: 26px auto;
+  }
+  .thanks-text {
+    max-width: 320px;
+    font-size: 15px;
+  }
+  .thanks-actions {
+    margin-top: 30px;
+    gap: 10px;
+  }
+  .thanks-actions .btn {
+    height: 46px;
+    padding: 0 28px;
+    font-size: 15px;
+  }
+  .thanks-link {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+  .confirm {
+    padding: 24px 20px;
+  }
+  .confirm-title {
+    font-size: 21px;
+  }
+  .confirm-actions {
+    flex-direction: column-reverse;
+  }
+  .confirm-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
