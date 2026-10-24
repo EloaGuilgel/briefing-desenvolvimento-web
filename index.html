@@ -1382,6 +1382,11 @@
             </div>
           </div>
 
+          <p class="send-error" id="send-error" role="alert" hidden>
+            Não foi possível enviar suas respostas. Verifique sua conexão e
+            tente novamente. Suas respostas continuam preenchidas.
+          </p>
+
           <div class="actions">
             <button class="btn btn-outline" type="button" data-prev>
               <span class="arrow">←</span> Etapa anterior
@@ -1391,6 +1396,19 @@
             </button>
           </div>
         </fieldset>
+
+        <!-- Campo anti-robô (honeypot): invisível e fora da navegação.
+             Pessoas não o preenchem; se vier preenchido, o envio é recusado. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-site">Deixe este campo em branco</label>
+          <input
+            type="text"
+            id="hp-site"
+            name="hp_site"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
       </form>
     </section>
 

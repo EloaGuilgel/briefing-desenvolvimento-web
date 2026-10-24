@@ -92,8 +92,18 @@ form.addEventListener('keydown', e => {
 });
 
 // ---------- Envio ----------
-form.addEventListener('submit', e => {
+// URL do Web App do Google Apps Script (termina em /exec).
+// Cole aqui a URL gerada em Implantar > Nova implantação > App da Web.
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwdKnVkdrn69KDO1_W-2dtsnO-Q2OU0nGgWjChIeuiITcA2dXghDQAREJPl82SX9wCh/exec';
+
+const submitBtn = form.querySelector('[type="submit"]');
+const submitLabel = submitBtn.innerHTML;
+const sendError = document.getElementById('send-error');
+let enviando = false;
+
+form.addEventListener('submit', async e => {
   e.preventDefault();
+  if (enviando || enviado) return; // evita clique duplo e reenvio
   if (!validateStep(current)) return;
 
   // Perguntas de múltipla escolha viram uma lista com todas as opções marcadas
@@ -105,9 +115,32 @@ form.addEventListener('submit', e => {
   }
   console.log('Respostas do briefing:', dados);
 
-  // Aqui você pode enviar os dados para um serviço
-  // (Formspree, EmailJS, Google Sheets, sua API...). Exemplo:
-  // fetch('SUA_URL', { method: 'POST', body: JSON.stringify(dados) })
+  enviando = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Enviando…';
+  sendError.hidden = true;
+
+  try {
+    if (!WEB_APP_URL.startsWith('https://')) throw new Error('URL do Web App não configurada');
+    // text/plain evita a verificação prévia (CORS) que o Apps Script não responde
+    const resp = await fetch(WEB_APP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(dados),
+      signal: AbortSignal.timeout(30000),
+    });
+    const resultado = await resp.json();
+    if (!resp.ok || !resultado.ok) throw new Error(resultado.error || `HTTP ${resp.status}`);
+  } catch (err) {
+    // Fica na última etapa com tudo preenchido para tentar de novo
+    console.error('Falha ao enviar o briefing:', err);
+    sendError.hidden = false;
+    return;
+  } finally {
+    enviando = false;
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = submitLabel;
+  }
 
   enviado = true;
   showScreen('thanks');
@@ -120,6 +153,7 @@ const confirmRestart = document.getElementById('confirm-restart');
 function novoPreenchimento() {
   form.reset();
   enviado = false;
+  sendError.hidden = true;
   form.querySelectorAll('.has-error').forEach(f => f.classList.remove('has-error'));
   // Atualiza a cor dos selects e esconde as perguntas condicionais
   form.querySelectorAll('select, [type="checkbox"]').forEach(c => c.dispatchEvent(new Event('change')));

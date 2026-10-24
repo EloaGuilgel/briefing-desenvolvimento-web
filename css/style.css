@@ -454,6 +454,29 @@ textarea:focus {
   display: block;
 }
 
+/* Falha no envio (etapa final) */
+.send-error {
+  margin-top: calc(22 * var(--u));
+  font-size: calc(14 * var(--u));
+  line-height: 1.5;
+  color: var(--error);
+}
+
+/* Botão de envio enquanto a resposta é enviada */
+.btn:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+/* Honeypot: fora da tela, sem afetar o layout */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Select */
 .select {
   position: relative;
