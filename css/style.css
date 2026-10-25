@@ -1,8 +1,7 @@
 /* =========================================================
    BRIEFING DE DESENVOLVIMENTO DE PROJETOS
    ---------------------------------------------------------
-   --u é a "unidade" do layout: vale 1px em telas altas e
-   diminui sozinha em telas baixas, para tudo caber sem rolagem.
+  
    ========================================================= */
 
 :root {
@@ -78,7 +77,7 @@ textarea {
   }
 }
 
-/* Saída suave da tela atual (ao concluir o envio) */
+
 .screen.is-leaving {
   animation: fadeOut 0.3s ease both;
 }
@@ -152,9 +151,7 @@ textarea:focus-visible {
 /* =========================================================
    TELA INICIAL
    ---------------------------------------------------------
-   Réplica da referência (454 x 476). A tela é um "quadro"
-   com essa proporção, e todas as medidas usam cqh:
-   1 px da referência = 100/476 cqh ≈ 0,21cqh.
+   
    ========================================================= */
 .screen-intro {
   height: 100vh;
@@ -173,7 +170,7 @@ textarea:focus-visible {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(60, 40, 30, 0.1);
-  /* tons da parede/mesa da foto, para a borda direita da foto sumir */
+
   background: linear-gradient(180deg, #ebdfd2 0%, #e2d3c3 55%, #b9a491 100%);
   container-type: size;
 }
@@ -183,7 +180,7 @@ textarea:focus-visible {
   }
 }
 
-/* Foto: encostada à esquerda, clareada como na referência */
+
 .intro-photo {
   position: absolute;
   inset: 0;
@@ -276,7 +273,7 @@ textarea:focus-visible {
   gap: 1.6cqh;
 }
 
-/* Fica no espaço do padding inferior, sem empurrar o botão */
+
 .intro-signature {
   position: absolute;
   left: 0;
@@ -601,8 +598,7 @@ textarea:focus {
 
 /* =========================================================
    OBRIGADA
-   A foto aparece inteira (proporção 3:2) e o texto é
-   dimensionado pela altura dela (unidade cqh).
+  
    ========================================================= */
 .screen-thanks {
   height: 100vh;
@@ -774,9 +770,6 @@ textarea:focus {
     display: none;
   }
 
-  /* Inicial no celular: mesma composição da referência —
-     foto clara à esquerda, card centralizado por cima à direita.
-     Medidas em vw para manter a proporção em qualquer celular. */
   .screen-intro {
     padding: 0;
   }
