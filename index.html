@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Briefing de Desenvolvimento de Projetos</title>
+    <title>Briefing de Desenvolvimento</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Fundo da tela final já carregado, para ela aparecer sem atraso -->
+    <link
+      rel="preload"
+      as="image"
+      href="img/fundo-obrigada.jpg"
+      media="(min-width: 721px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="img/fundo-obrigada-mobile.jpg"
+      media="(max-width: 720px)"
+    />
   </head>
   <body>
     <!-- ===================== TELA INICIAL ===================== -->
@@ -20,9 +33,7 @@
 
         <main class="intro-card">
           <p class="label">Questionário</p>
-          <h1 class="intro-title">
-            Briefing de<br />Desenvolvimento<br />de Projetos
-          </h1>
+          <h1 class="intro-title">Briefing de<br />Desenvolvimento<br /></h1>
           <p class="intro-text">
             Esse questionário vai me ajudar a entender melhor o seu projeto,
             suas necessidades e expectativas, para que eu possa te entregar a

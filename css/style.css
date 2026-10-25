@@ -78,6 +78,16 @@ textarea {
   }
 }
 
+/* Saída suave da tela atual (ao concluir o envio) */
+.screen.is-leaving {
+  animation: fadeOut 0.3s ease both;
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
 /* ---------- Botões ---------- */
 .btn {
   display: inline-flex;

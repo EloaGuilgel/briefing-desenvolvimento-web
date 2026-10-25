@@ -26,6 +26,17 @@ function showScreen(name) {
   window.scrollTo({ top: 0 });
 }
 
+// Esmaece a tela atual e só depois mostra a próxima
+function fadeToScreen(name) {
+  const atual = document.querySelector('.screen.is-active');
+  atual.classList.add('is-leaving');
+  return new Promise(resolve => setTimeout(() => {
+    atual.classList.remove('is-leaving');
+    showScreen(name);
+    resolve();
+  }, 300));
+}
+
 // ---------- Mostrar etapa ----------
 function showStep(n) {
   current = n;
@@ -135,16 +146,20 @@ form.addEventListener('submit', async e => {
     // Fica na última etapa com tudo preenchido para tentar de novo
     console.error('Falha ao enviar o briefing:', err);
     sendError.hidden = false;
+    restaurarBotao();
     return;
-  } finally {
-    enviando = false;
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = submitLabel;
   }
 
   enviado = true;
-  showScreen('thanks');
+  await fadeToScreen('thanks');
+  restaurarBotao(); // o botão só volta ao normal depois que a tela já trocou
 });
+
+function restaurarBotao() {
+  enviando = false;
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = submitLabel;
+}
 
 // ---------- Tela final ----------
 const confirmRestart = document.getElementById('confirm-restart');
